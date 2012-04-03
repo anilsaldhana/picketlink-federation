@@ -38,7 +38,7 @@
   <dependencies>
    	<dependency>
             <groupId>org.picketlink</groupId>
-            <artifactId>picketlink-fed-core</artifactId>
+            <artifactId>picketlink-core</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
   </dependencies>

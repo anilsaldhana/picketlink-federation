@@ -33,7 +33,7 @@ import javax.servlet.Servlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
- 
+
 /**
  * @author Anil.Saldhana@redhat.com
  * @since Jan 28, 2009
@@ -41,130 +41,130 @@ import javax.servlet.ServletException;
 @SuppressWarnings({ "rawtypes"})
 public class TestServletContext implements ServletContext
 {
-   private HashMap<String,String> params = new HashMap<String,String>();
+    private HashMap<String,String> params = new HashMap<String,String>();
 
-   public TestServletContext(HashMap<String,String> map)
-   {
-      this.params = map;
-   }
-   
-   public Object getAttribute(String name)
-   { 
-      return null;
-   }
+    public TestServletContext(HashMap<String,String> map)
+    {
+        this.params = map;
+    }
 
-   public Enumeration getAttributeNames()
-   {   
-      return null;
-   }
+    public Object getAttribute(String name)
+    { 
+        return null;
+    }
 
-   public ServletContext getContext(String uripath)
-   {   
-      return null;
-   }
+    public Enumeration getAttributeNames()
+    {   
+        return null;
+    }
 
-   public String getContextPath()
-   {   
-      return null;
-   }
+    public ServletContext getContext(String uripath)
+    {   
+        return null;
+    }
 
-   public String getInitParameter(String name)
-   {   
-      return this.params.get(name);
-   }
+    public String getContextPath()
+    {   
+        return null;
+    }
 
-   public Enumeration getInitParameterNames()
-   {
-      return null;
-   }
+    public String getInitParameter(String name)
+    {   
+        return this.params.get(name);
+    }
 
-   public int getMajorVersion()
-   {
-      return 0;
-   }
+    public Enumeration getInitParameterNames()
+    {
+        return null;
+    }
 
-   public String getMimeType(String file)
-   {
-      return null;
-   }
+    public int getMajorVersion()
+    {
+        return 0;
+    }
 
-   public int getMinorVersion()
-   {
-      return 0;
-   }
+    public String getMimeType(String file)
+    {
+        return null;
+    }
 
-   public RequestDispatcher getNamedDispatcher(String name)
-   {
-      return null;
-   }
+    public int getMinorVersion()
+    {
+        return 0;
+    }
 
-   public String getRealPath(String path)
-   {
-      return null;
-   }
+    public RequestDispatcher getNamedDispatcher(String name)
+    {
+        return null;
+    }
 
-   public RequestDispatcher getRequestDispatcher(String path)
-   {
-      return null;
-   }
+    public String getRealPath(String path)
+    {
+        return null;
+    }
 
-   public URL getResource(String path) throws MalformedURLException
-   {
-      return null;
-   }
+    public RequestDispatcher getRequestDispatcher(String path)
+    {
+        return null;
+    }
 
-   public InputStream getResourceAsStream(String path)
-   {
-      return null;
-   }
+    public URL getResource(String path) throws MalformedURLException
+    {
+        return null;
+    }
 
-   public Set getResourcePaths(String path)
-   {
-      return null;
-   }
+    public InputStream getResourceAsStream(String path)
+    {
+        return null;
+    }
 
-   public String getServerInfo()
-   {
-      return null;
-   }
+    public Set getResourcePaths(String path)
+    {
+        return null;
+    }
 
-   public Servlet getServlet(String name) throws ServletException
-   {
-      return null;
-   }
+    public String getServerInfo()
+    {
+        return null;
+    }
 
-   public String getServletContextName()
-   {
-      return null;
-   }
- 
-   public Enumeration getServletNames()
-   {
-      return null;
-   }
- 
-   public Enumeration getServlets()
-   {
-      return null;
-   }
+    public Servlet getServlet(String name) throws ServletException
+    {
+        return null;
+    }
 
-   public void log(String msg)
-   {
-   }
+    public String getServletContextName()
+    {
+        return null;
+    }
 
-   public void log(Exception exception, String msg)
-   {
-   }
+    public Enumeration getServletNames()
+    {
+        return null;
+    }
 
-   public void log(String message, Throwable throwable)
-   {
-   }
+    public Enumeration getServlets()
+    {
+        return null;
+    }
 
-   public void removeAttribute(String name)
-   {
-   }
+    public void log(String msg)
+    {
+    }
 
-   public void setAttribute(String name, Object object)
-   {
-   }
+    public void log(Exception exception, String msg)
+    {
+    }
+
+    public void log(String message, Throwable throwable)
+    {
+    }
+
+    public void removeAttribute(String name)
+    {
+    }
+
+    public void setAttribute(String name, Object object)
+    {
+    }
 }

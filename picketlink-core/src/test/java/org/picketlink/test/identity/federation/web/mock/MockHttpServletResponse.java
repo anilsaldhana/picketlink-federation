@@ -19,9 +19,8 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.picketlink.test.identity.federation.bindings.servlets;
+package org.picketlink.test.identity.federation.web.mock;
 
-import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -33,185 +32,230 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Mock Servlet Response
  * @author Anil.Saldhana@redhat.com
- * @since Jan 28, 2009
+ * @since Oct 7, 2009
  */
-public class TestServletResponse implements HttpServletResponse
+public class MockHttpServletResponse implements HttpServletResponse
 {
-    private BufferedOutputStream bos = null;
+    private PrintWriter printWriter;
 
-    public TestServletResponse(OutputStream os)
+    public void setOutputStream(final OutputStream os)
     {
-        super();
-        bos = new BufferedOutputStream(os);
+        this.outputStream = new ServletOutputStream()
+        {
+            @Override
+            public void write(int b) throws IOException
+            {
+                os.write(b);  
+            }
+        }; 
     }
 
-    public void addCookie(Cookie cookie)
+    public void setWriter(PrintWriter pw)
+    {
+        this.printWriter = pw;
+    }
+
+    private int errorCode;
+    private ServletOutputStream outputStream;
+
+    public void addCookie(Cookie arg0)
+    {  
+    }
+
+    public void addDateHeader(String arg0, long arg1)
     { 
     }
 
-    public void addDateHeader(String name, long date)
+    public void addHeader(String arg0, String arg1)
     { 
     }
 
-    public void addHeader(String name, String value)
-    {  
+    public void addIntHeader(String arg0, int arg1)
+    { 
     }
 
-    public void addIntHeader(String name, int value)
-    {  
-    }
-
-    public boolean containsHeader(String name)
-    {  
+    public boolean containsHeader(String arg0)
+    {   
         return false;
     }
 
-    public String encodeRedirectURL(String url)
+    public String encodeRedirectURL(String arg0)
+    {
+
+        throw new RuntimeException("NYI");
+    }
+
+    public String encodeRedirectUrl(String arg0)
+    {
+
+        throw new RuntimeException("NYI");
+    }
+
+    public String encodeURL(String arg0)
+    {
+
+        throw new RuntimeException("NYI");
+    }
+
+    public String encodeUrl(String arg0)
+    {
+
+        throw new RuntimeException("NYI");
+    }
+
+    public int getError()
+    {
+        return this.errorCode;
+    }
+
+    public void sendError(int arg0) throws IOException
     { 
-        return null;
+        this.errorCode = arg0;
     }
 
-    public String encodeRedirectUrl(String url)
-    {
-        return null;
+    public void sendError(int arg0, String arg1) throws IOException
+    {   
+        sendError(arg0); 
     }
 
-    public String encodeURL(String url)
+    public void sendRedirect(String arg0) throws IOException
     {
-        return null;
+
+
     }
 
-    public String encodeUrl(String url)
+    public void setDateHeader(String arg0, long arg1)
     {
-        return null;
+
+
     }
 
-    public void sendError(int sc) throws IOException
+    public void setHeader(String arg0, String arg1)
     {
+
+
     }
 
-    public void sendError(int sc, String msg) throws IOException
+    public void setIntHeader(String arg0, int arg1)
     {
+
+
     }
 
-    public void sendRedirect(String location) throws IOException
+    public void setStatus(int arg0)
     {
+
+
     }
 
-    public void setDateHeader(String name, long date)
+    public void setStatus(int arg0, String arg1)
     {
-    }
 
-    public void setHeader(String name, String value)
-    {
-    }
 
-    public void setIntHeader(String name, int value)
-    {
-    }
-
-    public void setStatus(int sc)
-    {
-    }
-
-    public void setStatus(int sc, String sm)
-    {
     }
 
     public void flushBuffer() throws IOException
     {
-        this.bos.flush();
+
+
     }
 
     public int getBufferSize()
     {
+
         return 0;
     }
 
     public String getCharacterEncoding()
     {
-        return null;
+
+        throw new RuntimeException("NYI");
     }
 
     public String getContentType()
     {
-        return null;
+
+        throw new RuntimeException("NYI");
     }
 
     public Locale getLocale()
     {
-        return null;
+
+        throw new RuntimeException("NYI");
     }
 
     public ServletOutputStream getOutputStream() throws IOException
-    { 
-        bos.flush();
-        return new ServletOutputStream()
-        {
-
-            public void write(int b) throws IOException
-            {
-                bos.write(b);
-            }
-        };
+    {
+        return this.outputStream;
     }
 
     public PrintWriter getWriter() throws IOException
     { 
-        return null;
+        return this.printWriter;
     }
 
     public boolean isCommitted()
-    { 
+    {
+
         return false;
     }
 
     public void reset()
     {
+
+
     }
 
     public void resetBuffer()
     {
+
+
     }
 
-    public void setBufferSize(int size)
+    public void setBufferSize(int arg0)
     {
+
+
     }
 
-    public void setCharacterEncoding(String charset)
+    public void setCharacterEncoding(String arg0)
     {
+
+
     }
 
-    public void setContentLength(int len)
+    public void setContentLength(int arg0)
     {
+
+
     }
 
-    public void setContentType(String type)
+    public void setContentType(String arg0)
     {
+
+
     }
 
-    public void setLocale(Locale loc)
-    {
+    public void setLocale(Locale arg0)
+    { 
     }
-
-
+ 
     public int getStatus() { 
         return 0;
     }
-
-
+ 
     public String getHeader(String name) { 
         return null;
     }
-
-
+ 
     public Collection<String> getHeaders(String name) { 
         return null;
     }
-
-
+ 
     public Collection<String> getHeaderNames() { 
         return null;
-    } 
+    }
+
 }
