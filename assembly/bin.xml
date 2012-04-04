@@ -5,23 +5,7 @@
   <includeBaseDirectory>false</includeBaseDirectory>
   <fileSets>
     <fileSet>
-      <directory>${basedir}/../picketlink-xmlsec-model/target/classes</directory>
-      <outputDirectory>/</outputDirectory>
-    </fileSet>
-    <fileSet>
-      <directory>${basedir}/../picketlink-fed-model/target/classes</directory>
-      <outputDirectory>/</outputDirectory>
-    </fileSet>
-    <fileSet>
-      <directory>${basedir}/../picketlink-fed-core/target/classes</directory>
-      <outputDirectory>/</outputDirectory>
-    </fileSet>
-    <fileSet>
-      <directory>${basedir}/../picketlink-fed-api/target/classes/</directory>
-      <outputDirectory>/</outputDirectory>
-    </fileSet>
-    <fileSet>
-      <directory>${basedir}/../picketlink-web/target/classes/</directory>
+      <directory>${basedir}/../picketlink-core/target/classes/</directory>
       <outputDirectory>/</outputDirectory>
     </fileSet>
   </fileSets>

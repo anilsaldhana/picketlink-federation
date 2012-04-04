@@ -17,7 +17,7 @@
      <module>parent</module>
      <module>picketlink-core</module>
      <module>picketlink-bindings</module>
-     <module>picketlink-bindings-jboss</module>
+     <module>picketlink-jbas5</module>
      <module>picketlink-webapps</module>
      <module>assembly</module>
    </modules>
