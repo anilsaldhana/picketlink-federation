@@ -85,20 +85,6 @@ public class STSPrincipalMappingProvider extends AbstractPrincipalMappingProvide
                }
                return;
             }
-            /*for (JAXBElement<?> element : subject.getContent())
-            {
-               if (element.getDeclaredType().equals(NameIDType.class))
-               {
-                  NameIDType nameID = (NameIDType) element.getValue();
-                  Principal mappedPrincipal = new SimplePrincipal(nameID.getValue());
-                  result.setMappedObject(mappedPrincipal);
-                  if (log.isDebugEnabled())
-                  {
-                     log.debug("Mapped principal to " + mappedPrincipal);
-                  }
-                  return;
-               }
-            }*/
          }
       }
       catch ( Exception e )

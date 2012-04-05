@@ -1,17 +1,6 @@
 package org.picketlink.identity.federation.bindings.jboss.auth;
 
-import java.security.Principal;
-import java.security.acl.Group;
-import java.util.Enumeration;
-import java.util.Map;
-
-import javax.security.auth.Subject;
-
-import org.apache.log4j.Logger;
-import org.picketlink.identity.federation.core.wstrust.plugins.saml.SAML20TokenAttributeProvider;
-import org.picketlink.identity.federation.saml.v2.assertion.AttributeStatementType;
-import org.picketlink.identity.federation.saml.v2.assertion.AttributeStatementType.ASTChoiceType;
-import org.picketlink.identity.federation.saml.v2.assertion.AttributeType;
+import org.picketlink.identity.federation.bindings.jboss.auth.SAML20CommonTokenRoleAttributeProvider;
 
 /**
  * <p>
@@ -41,69 +30,6 @@ import org.picketlink.identity.federation.saml.v2.assertion.AttributeType;
  * 
  * @author <a href="mailto:Babak@redhat.com">Babak Mozaffari</a>
  */
-public class SAML20TokenRoleAttributeProvider implements SAML20TokenAttributeProvider
+public class SAML20TokenRoleAttributeProvider extends SAML20CommonTokenRoleAttributeProvider
 {
-   private static Logger logger = Logger.getLogger(SAML20TokenRoleAttributeProvider.class);
-
-   /**
-    * The name of the principal in JBoss that is expected to include user roles
-    */
-   public static final String JBOSS_ROLE_PRINCIPAL_NAME = "Roles";
-
-   /**
-    * The default attribute name in the SAML Token that will carry the user's roles, if not configured otherwise
-    */
-   public static final String DEFAULT_TOKEN_ROLE_ATTRIBUTE_NAME = "role";
-
-   /**
-    * The name of the attribute in the SAML Token that will carry the user's roles
-    */
-   private String tokenRoleAttributeName;
-
-   public void setProperties(Map<String, String> properties)
-   {
-      String roleAttrKey = this.getClass().getName() + ".tokenRoleAttributeName";
-      tokenRoleAttributeName = properties.get(roleAttrKey);
-      if (tokenRoleAttributeName == null)
-      {
-         tokenRoleAttributeName = DEFAULT_TOKEN_ROLE_ATTRIBUTE_NAME;
-      }
-   }
-
-   public AttributeStatementType getAttributeStatement()
-   {
-      Subject subject = SecurityActions.getSecurityContext().getSubjectInfo().getAuthenticatedSubject();
-      if (subject == null)
-      {
-         if (logger.isDebugEnabled())
-            logger.debug("No authentication Subject found, cannot provide any user roles!");
-         return null;
-      }
-      else
-      {
-         AttributeStatementType attributeStatement = new AttributeStatementType();
-         AttributeType rolesAttribute = new AttributeType(tokenRoleAttributeName);
-         attributeStatement.addAttribute(new ASTChoiceType(rolesAttribute));
-
-         //List<Object> roles = rolesAttribute.getAttributeValue();
-         for (Principal rolePrincipal : subject.getPrincipals())
-         {
-            if (JBOSS_ROLE_PRINCIPAL_NAME.equalsIgnoreCase(rolePrincipal.getName()))
-            {
-               Group simpleGroup = (Group) rolePrincipal;
-               Enumeration<? extends Principal> members = simpleGroup.members();
-               while (members.hasMoreElements())
-               {
-                  Principal role = members.nextElement();
-                  rolesAttribute.addAttributeValue(role.getName());
-                  //roles.add( role.getName() );
-               }
-            }
-         }
-         if (logger.isDebugEnabled())
-            logger.debug("Returning an AttributeStatement with a [" + tokenRoleAttributeName
-                  + "] attribute containing: " + rolesAttribute.getAttributeValue());
-         return attributeStatement;
-      }
-   }
 }

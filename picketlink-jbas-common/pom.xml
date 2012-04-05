@@ -6,9 +6,9 @@
       <relativePath>../parent</relativePath>
    </parent>
    <modelVersion>4.0.0</modelVersion>
-   <artifactId>picketlink-jbas5-single</artifactId>
+   <artifactId>picketlink-jbas-common</artifactId>
    <packaging>jar</packaging>
-   <name>PicketLink Federation Server Bindings for JBoss</name>
+   <name>PicketLink Federation Server Bindings</name>
    <url>http://labs.jboss.org/portal/picketlink/</url>
    <description>PicketLink contains the foundation for Federated Identity Needs.</description>
    <licenses>
@@ -21,6 +21,63 @@
       <name>JBoss Inc.</name>
       <url>http://www.jboss.org</url>
    </organization>
+
+   <!-- Profile to exclude the integration tests that take long time -->
+   <profiles>
+    <profile>
+      <id>exclude-long-tests</id>
+     <activation>
+       <activeByDefault>true</activeByDefault>
+     </activation>
+     <build>
+      <plugins>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <configuration>
+              <printSummary>true</printSummary>
+              <disableXmlReport>false</disableXmlReport>
+              <testFailureIgnore>false</testFailureIgnore>
+              <excludes>
+                <exclude>**/integration/*TestCase.java</exclude>
+              </excludes>
+              <forkMode>pertest</forkMode>
+              <argLine>${surefire.jvm.args}</argLine>
+              <useFile>false</useFile>
+             <trimStackTrace>false</trimStackTrace>
+           </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>long-tests</id>
+     <activation>
+       <activeByDefault>false</activeByDefault>
+     </activation>
+     <build>
+      <plugins>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <configuration>
+              <childDelegation>true</childDelegation>
+              <printSummary>true</printSummary>
+              <disableXmlReport>false</disableXmlReport>
+              <testFailureIgnore>false</testFailureIgnore>
+              <includes>
+                <include>**/integration/*TestCase.java</include>
+              </includes>
+              <forkMode>pertest</forkMode>
+              <argLine>${surefire.jvm.args}</argLine>
+              <useFile>false</useFile>
+             <trimStackTrace>false</trimStackTrace>
+           </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+   </profiles>
+
    <build>
      <plugins>
        <plugin>
@@ -36,7 +93,7 @@
             <argLine>-Djava.endorsed.dirs=${basedir}/src/test/resources/endorsed</argLine>
             <useFile>false</useFile>
             <trimStackTrace>false</trimStackTrace>
-           </configuration>
+          </configuration>
         </plugin>
      </plugins>
   </build>
@@ -49,49 +106,48 @@
       </dependency>
       <dependency>
          <groupId>org.picketlink</groupId>
-         <artifactId>picketlink-bindings</artifactId>
+         <artifactId>picketlink-tomcat-common</artifactId>
          <version>${project.version}</version>
       </dependency>
       <dependency>
-         <groupId>org.picketlink</groupId>
-         <artifactId>picketlink-jbas-common</artifactId>
-         <version>${project.version}</version>
+        <groupId>org.jboss.spec.javax.security.jacc</groupId>
+        <artifactId>jboss-jacc-api_1.4_spec</artifactId>
+        <version>1.0.0.Final</version>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.logging</groupId>
+   	     <artifactId>jboss-logging-spi</artifactId>
+   	     <version>2.1.0.GA</version>
+   	     <optional>true</optional>
       </dependency>
       <dependency>
          <groupId>org.jboss.security</groupId>
-         <artifactId>jboss-security-spi</artifactId>
+         <artifactId>jbossxacml</artifactId>
          <version>2.0.4</version>
-         <scope>compile</scope>
+         <optional>true</optional>
       </dependency>
       <dependency>
-         <groupId>org.jboss.security</groupId>
-         <artifactId>jbosssx</artifactId>
-         <version>2.0.4</version>
-         <scope>compile</scope>
+         <groupId>log4j</groupId>
+         <artifactId>log4j</artifactId>
+         <optional>true</optional>
       </dependency>
       <dependency>
-         <groupId>org.jboss.jbossas</groupId>
-         <artifactId>jboss-as-security</artifactId>
-         <version>6.0.0.Final</version>
-         <scope>provided</scope>
+         <groupId>org.apache.tomcat</groupId>
+         <artifactId>catalina</artifactId>
+         <version>6.0.18</version>
+         <optional>true</optional>
       </dependency>
       <dependency>
-         <groupId>org.jboss.aop</groupId>
-         <artifactId>jboss-aop</artifactId>
-         <version>2.1.6.GA</version>
-  	 <scope>provided</scope>
-         <exclusions>
-           <exclusion>
-            <groupId>trove</groupId>
-            <artifactId>trove</artifactId>
-           </exclusion>
-         </exclusions>
+         <groupId>org.apache.tomcat</groupId>
+         <artifactId>juli</artifactId>
+         <version>6.0.18</version>
+         <optional>true</optional>
       </dependency>
       <dependency>
-        <groupId>trove</groupId>
-        <artifactId>trove</artifactId>
-        <version>1.0.2</version>
-        <scope>provided</scope>
+         <groupId>org.apache.tomcat</groupId>
+         <artifactId>coyote</artifactId>
+         <version>6.0.18</version>
+         <scope>test</scope>
       </dependency>
       <dependency>
          <groupId>junit</groupId>

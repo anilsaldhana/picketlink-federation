@@ -28,14 +28,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.picketlink.identity.federation.core.interfaces.AttributeManager;
 import org.jboss.security.SecurityConstants;
 import org.jboss.security.SecurityContext;
-import org.jboss.security.SecurityContextAssociation;
 import org.jboss.security.identity.Attribute;
 import org.jboss.security.mapping.MappingContext;
 import org.jboss.security.mapping.MappingManager;
 import org.jboss.security.mapping.MappingType;
+import org.picketlink.identity.federation.core.interfaces.AttributeManager;
 
 /**
  * An attribute manager implementation for JBAS
@@ -54,7 +53,7 @@ public class JBossAppServerAttributeManager implements AttributeManager
    { 
       Map<String,Object> attributeMap = new HashMap<String, Object>();
       
-      SecurityContext sc = SecurityContextAssociation.getSecurityContext();
+      SecurityContext sc = SecurityActions.getSecurityContext();
       if(sc != null)
       {
          String mappingType = MappingType.ATTRIBUTE.name();
