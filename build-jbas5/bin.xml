@@ -17,5 +17,9 @@
       <directory>${basedir}/../picketlink-tomcat5/target/classes/</directory>
       <outputDirectory>/</outputDirectory>
     </fileSet>
+    <fileSet>
+      <directory>${basedir}/../picketlink-jbas5/target/classes/</directory>
+      <outputDirectory>/</outputDirectory>
+    </fileSet>
   </fileSets>
 </assembly>
