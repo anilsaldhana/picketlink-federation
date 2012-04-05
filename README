@@ -1,2 +1,5 @@
 picketlink-jbas5  contains the bindings for JBoss AS 5.x and 6.x
 picketlink-jbas7 contains the bindings for JBoss AS 7.1 and Above
+
+picketlink-tomcat5 contains the bindings for Tomcat 5 and 6
+picketlink-tomcat7 contains the bindings for Tomcat 7

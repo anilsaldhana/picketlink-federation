@@ -6,7 +6,7 @@
       <relativePath>../parent</relativePath>
    </parent>
    <modelVersion>4.0.0</modelVersion>
-   <artifactId>picketlink-jbas5-single</artifactId>
+   <artifactId>picketlink-jbas7-single</artifactId>
    <packaging>jar</packaging>
    <name>PicketLink Federation Server Bindings for JBoss</name>
    <url>http://labs.jboss.org/portal/picketlink/</url>
@@ -53,40 +53,15 @@
          <version>${project.version}</version>
       </dependency>
       <dependency>
-         <groupId>org.jboss.security</groupId>
-         <artifactId>jboss-security-spi</artifactId>
-         <version>2.0.4</version>
-         <scope>compile</scope>
+         <groupId>org.picketbox</groupId>
+         <artifactId>picketbox</artifactId>
+         <version>4.0.7.Final</version>
       </dependency>
       <dependency>
-         <groupId>org.jboss.security</groupId>
-         <artifactId>jbosssx</artifactId>
-         <version>2.0.4</version>
-         <scope>compile</scope>
-      </dependency>
-      <dependency>
-         <groupId>org.jboss.jbossas</groupId>
-         <artifactId>jboss-as-security</artifactId>
-         <version>6.0.0.Final</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <groupId>org.jboss.aop</groupId>
-         <artifactId>jboss-aop</artifactId>
-         <version>2.1.6.GA</version>
-  	 <scope>provided</scope>
-         <exclusions>
-           <exclusion>
-            <groupId>trove</groupId>
-            <artifactId>trove</artifactId>
-           </exclusion>
-         </exclusions>
-      </dependency>
-      <dependency>
-        <groupId>trove</groupId>
-        <artifactId>trove</artifactId>
-        <version>1.0.2</version>
-        <scope>provided</scope>
+         <groupId>org.jboss.web</groupId>
+         <artifactId>jbossweb</artifactId>
+         <version>7.0.10.Final</version>
+         <optional>true</optional>
       </dependency>
       <dependency>
          <groupId>junit</groupId>
