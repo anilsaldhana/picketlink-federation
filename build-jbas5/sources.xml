@@ -18,6 +18,10 @@
       <outputDirectory>/</outputDirectory>
     </fileSet>
     <fileSet>
+      <directory>${basedir}/../picketlink-jbas-common/src/main/java</directory>
+      <outputDirectory>/</outputDirectory>
+    </fileSet>
+    <fileSet>
       <directory>${basedir}/../picketlink-jbas5/src/main/java</directory>
       <outputDirectory>/</outputDirectory>
     </fileSet>
