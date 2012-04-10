@@ -18,7 +18,6 @@
      <module>picketlink-core</module>
      <module>picketlink-bindings</module>
      <module>picketlink-webapps</module>
-     <module>trust</module>
    </modules>
 
    <reporting>
