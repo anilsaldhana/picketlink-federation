@@ -49,11 +49,6 @@
       </dependency>
       <dependency>
          <groupId>org.picketlink</groupId>
-         <artifactId>picketlink-bindings</artifactId>
-         <version>${project.version}</version>
-      </dependency>
-      <dependency>
-         <groupId>org.picketlink</groupId>
          <artifactId>picketlink-jbas-common</artifactId>
          <version>${project.version}</version>
       </dependency>
